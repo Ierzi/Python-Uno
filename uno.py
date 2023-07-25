@@ -257,7 +257,7 @@ class Game:
                             self.deck.give_card_to_player(self.current_player)
                         
                         self.is_plus_four = False
-                        
+
                         break
 
                     print(f"{self.current_card.__str__()}")
@@ -345,12 +345,3 @@ class Game:
     def get_starting_card(self) -> Card:
         return self.starting_card
     
-
-# Now, I'm going to test the game.
-
-game = Game()
-game.add_player(Player("Player 1"))
-game.add_player(Player("Player 2"))
-game.add_player(Player("Player 3"))
-game.add_player(Player("Player 4"))
-game.start
