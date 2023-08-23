@@ -37,7 +37,7 @@ class Value(Enum):
         return str(self.value)
 
 class UnoError(Exception):
-    def __init__(self, message: str or None = "no description provided") -> None:
+    def __init__(self, message: str = "no description provided") -> None:
         self.message = message
 
     def __str__(self) -> str:
