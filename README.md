@@ -11,7 +11,7 @@
  5. Execute the program and play the game!
 
 # Common Errors:
- 1. ModuleNotFound: Please check if you have the uno.py file in the same directory as your python file. If it's one of our modules in the file, please install enum and typing using pip.
+ 1. ModuleNotFound: Please check if you have the uno.py file in the same directory as your python file. If it's one of our modules in the file, please check if you have the typing and enum modules. They are normally   built-in to Python.
 
  For other errors, please use the issues tab to report them.
  The game is full of errors, so please report them! And if you can fix them, please contribute to the project (see "How to contribute" below)
