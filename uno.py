@@ -2,7 +2,6 @@
 """Trying to recreate UNO in Python."""
 
 import os
-os.system("cls")
 
 from enum import Enum
 from typing import Literal
