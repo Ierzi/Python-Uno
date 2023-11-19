@@ -102,18 +102,18 @@ class Player:
     
     @property
     def sort_deck(self):
-        self.deck.get_contains.sort(key=lambda card: card.get_value.value)
-        self.deck.get_contains.sort(key=lambda card: card.get_color.value)
+        self.deck.get_contains().sort(key=lambda card: card.get_value.value)
+        self.deck.get_contains().sort(key=lambda card: card.get_color.value)
     
     def get_card(self, index: int) -> Card:
-        return self.deck.get_contains[index]
+        return self.deck.get_contains()[index]
     
     def has_card(self, card: Card) -> bool:
-        return card in self.deck.get_contains
+        return card in self.deck.get_contains()
 
     @property
     def count_cards(self) -> int:
-        return len(self.deck.get_contains)
+        return len(self.deck.get_contains())
     
 
 
@@ -135,7 +135,7 @@ class PlayerDeck:
     def __str__(self) -> str:
         return f"Deck: {self.contains.__str__()}"
 
-    @property
+    
     def get_contains(self) -> list[Card]:
         return self.contains
 
@@ -243,7 +243,7 @@ class Game:
             case "play":
                 while True:
                     if self.is_plus_two:
-                        print("You got a +2 card, you have get 2 cards.")
+                        print("You got a +2 card, you have to get 2 cards.")
                         for _ in range(2):
                             self.deck.give_card_to_player(self.current_player)
                         
@@ -262,7 +262,7 @@ class Game:
                     print(f"{self.current_card.__str__()}")
 
                     color = input("Enter your card color: ").strip()
-                    value = input("Enter your card value: (in letters) (if 11: reverse, 12: plus_two, 13: color_changer, 14: plus_four) (finish with uno if uno) ").strip()
+                    value = input("Enter your card value: (in letters) (if 11: reverse, 12: plus_two, 13: color_changer, 14: plus_four) (finish with uno if uno) ").strip().lower()
                     if value.endswith("uno"):
                         if self.current_player.count_cards == 2:
                             print("You did say uno correctly!")
@@ -281,6 +281,8 @@ class Game:
                             self.current_card = card
                             
                             if card.get_value == Value.PLUS_FOUR:
+                                new_color = input("Enter the new color: ")
+                                self.current_card.color = Color[new_color.upper()]
                                 self.is_plus_four = True
                             elif card.get_value == Value.COLOR_CHANGER:
                                 new_color = input("Enter the new color: ")
@@ -344,3 +346,16 @@ class Game:
     def get_starting_card(self) -> Card:
         return self.starting_card
     
+
+
+# Executing the game with the uno.py with create a simple game
+# Including two players and 7 cards.
+if __name__ == "__main__":
+    game = Game()
+    player1 = Player("Player 1")
+    player2 = Player("Player 2")
+    
+    game.add_player(player1)
+    game.add_player(player2)
+
+    game.start()
