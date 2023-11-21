@@ -2,9 +2,11 @@
 """Trying to recreate UNO in Python."""
 
 import os
-
+import pdb
 from enum import Enum
 from typing import Literal
+
+
 
 class Color(Enum):
     RED = 1
@@ -130,7 +132,7 @@ class PlayerDeck:
         try: 
             self.contains.remove(card)
         except ValueError:
-            raise UnoError("Card not in deck")
+            raise UnoError("Card not in deck.")
 
     def __str__(self) -> str:
         return f"Deck: {self.contains.__str__()}"
@@ -348,7 +350,7 @@ class Game:
     
 
 
-# Executing the game with the uno.py with create a simple game
+# Executing the game with the uno.py will create a simple game
 # Including two players and 7 cards.
 if __name__ == "__main__":
     game = Game()
