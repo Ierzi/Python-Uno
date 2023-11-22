@@ -2,11 +2,13 @@
 """Trying to recreate UNO in Python."""
 
 import os
-import pdb
+import sys
 from enum import Enum
 from typing import Literal
 
-
+if sys.version_info < (3, 11):
+    print("Please use the 3.11 version of Python, or later.")
+    sys.exit(1) # Return code for invalid version.
 
 class Color(Enum):
     RED = 1
@@ -360,4 +362,4 @@ if __name__ == "__main__":
     game.add_player(player1)
     game.add_player(player2)
 
-    game.start()
+    game.start() 
